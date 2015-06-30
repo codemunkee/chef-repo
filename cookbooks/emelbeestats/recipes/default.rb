@@ -12,6 +12,10 @@ yum_package 'git' do
   action :install
 end
 
+yum_package 'screen' do
+  action :install
+end
+
 python_pip "flask"
 python_pip "twilio"
 python_pip "requests"
