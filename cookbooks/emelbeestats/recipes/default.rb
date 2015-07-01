@@ -16,13 +16,19 @@ yum_package 'screen' do
   action :install
 end
 
-python_pip "flask"
-python_pip "twilio"
-python_pip "requests"
+python_pip 'flask'
+python_pip 'twilio'
+python_pip 'requests'
 
-git "/root/emelbeestats" do
-  repository "git://github.com/codemunkee/emelbee.git"
+git '/root/emelbeestats' do
+  repository 'git://github.com/codemunkee/emelbee.git'
   revision 'master'
   checkout_branch 'master'
   action :sync
+end
+
+cron 'get-standings-json' do
+  minute '*/1'
+  command '/usr/bin/wget -O /root/emelbeestats/standings.json https://erikberg.com/mlb/standings.json'
+  user    'root'
 end
