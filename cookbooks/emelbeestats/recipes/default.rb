@@ -29,6 +29,6 @@ end
 
 cron 'get-standings-json' do
   minute '*/1'
-  command '/usr/bin/wget -O /root/emelbeestats/standings.json https://erikberg.com/mlb/standings.json'
+  command '/usr/bin/wget -O /root/emelbeestats/data/standings.json https://erikberg.com/mlb/standings.json'
   user    'root'
 end
