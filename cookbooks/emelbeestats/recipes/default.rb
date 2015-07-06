@@ -19,16 +19,12 @@ end
 python_pip 'flask'
 python_pip 'twilio'
 python_pip 'requests'
+python_pip 'pytest'
+python_pip 'pytest-cov'
 
 git '/root/emelbeestats' do
   repository 'git://github.com/codemunkee/emelbee.git'
   revision 'master'
   checkout_branch 'master'
   action :sync
-end
-
-cron 'get-standings-json' do
-  minute '*/1'
-  command '/usr/bin/wget -O /root/emelbeestats/data/standings.json https://erikberg.com/mlb/standings.json'
-  user    'root'
 end
